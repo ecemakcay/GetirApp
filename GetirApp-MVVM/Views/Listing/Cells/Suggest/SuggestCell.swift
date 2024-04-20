@@ -98,33 +98,33 @@ class SuggestCell: UICollectionViewCell {
          // Configure constraints for subviews
            NSLayoutConstraint.activate([
                // Product Image View Constraints
-               productImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-               productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+               productImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+               productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
                productImageView.widthAnchor.constraint(equalToConstant: 92),
                productImageView.heightAnchor.constraint(equalToConstant: 92),
                
                // Name Label Constraints
                nameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 8),
-               nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+               nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
                nameLabel.widthAnchor.constraint(equalToConstant: 92),
                nameLabel.heightAnchor.constraint(equalToConstant: 16),
                
                // Price Label Constraints
                priceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0),
-               priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+               priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
                priceLabel.widthAnchor.constraint(equalToConstant: 92),
                priceLabel.heightAnchor.constraint(equalToConstant: 19),
                
                // Attribute Label Constraints
                attributeLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 0),
-               attributeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+               attributeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
                attributeLabel.widthAnchor.constraint(equalToConstant: 92),
                attributeLabel.heightAnchor.constraint(equalToConstant: 16),
 
                
                // Stepper Button Constraints
-               stepperButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-               stepperButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+               stepperButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+               stepperButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
                stepperButton.widthAnchor.constraint(equalToConstant: 32),
                stepperButton.heightAnchor.constraint(equalToConstant: 32),
                

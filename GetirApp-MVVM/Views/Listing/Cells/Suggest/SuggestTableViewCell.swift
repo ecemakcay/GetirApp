@@ -9,13 +9,23 @@ import UIKit
 
 class SuggestTableViewCell: UITableViewCell {
     
+    
+    private let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = Constants.Color.tableViewColor
+        return view
+    }()
+    
     private var collectionView: UICollectionView = {
          let layout = UICollectionViewFlowLayout()
          layout.scrollDirection = .horizontal
          layout.itemSize = CGSize(width: 92, height: 153)
          layout.minimumLineSpacing = 16
+         layout.minimumInteritemSpacing = 16
          let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-         cv.backgroundColor = .clear
+         UICollectionViewCell.appearance().isSelected = false
+         cv.backgroundColor = .white
          return cv
      }()
     
@@ -28,7 +38,8 @@ class SuggestTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         prepareCollectionView()
-        setupUI()
+        setupView()
+        setupCollectionView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -47,19 +58,33 @@ class SuggestTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SuggestCell.self, forCellWithReuseIdentifier: "SuggestCell")
-        collectionView.isUserInteractionEnabled = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
+
     }
  
+    private func setupView() {
+           // UITableViewCell'e containerView'ı ekleyin
+           contentView.addSubview(containerView)
+           
+           // containerView'a ait layout kurallarını belirleyin
+           NSLayoutConstraint.activate([
+               containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+               containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+               containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+               containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+           ])
+           
+       }
     
-    func setupUI() {
-//        print("SETUPUI ÇIKTI")
-        addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+    func setupCollectionView() {
+        containerView.addSubview(collectionView)
+        
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
+            collectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0),
+            collectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16)
         ])
     }
 
@@ -86,11 +111,8 @@ extension SuggestTableViewCell: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
-      
         collectionView.deselectItem(at: indexPath, animated: true)
-            if let cell = collectionView.cellForItem(at: indexPath) as? SuggestCell {
-                cell.isSelectedCell = true
-            }
-        }
+          
+    }
     
 }
