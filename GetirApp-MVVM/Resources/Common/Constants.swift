@@ -24,6 +24,7 @@ struct Constants{
         static let navBarColor = #colorLiteral(red: 0.3647058824, green: 0.2431372549, blue: 0.737254902, alpha: 1)
         static let stepperColor = #colorLiteral(red: 0.3647058824, green: 0.2431372549, blue: 0.737254902, alpha: 1)
         static let navBarTextColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        static let tableViewColor = #colorLiteral(red: 0.9626654983, green: 0.9626654983, blue: 0.9626654983, alpha: 1)
        
     }
     
