@@ -18,8 +18,18 @@ class ListingViewController: UIViewController {
         }
     }
     
+    var products: [ProductData] = []{
+        didSet {
+           
+            tableView.reloadData()
+        }
+    }
+    
     private lazy var tableView: UITableView = {
          let tableView = UITableView(frame: .zero, style: .grouped)
+         tableView.backgroundColor = Constants.Color.tableViewColor
+         UITableViewCell.appearance().selectionStyle = .none
+         tableView.separatorStyle = .none
          return tableView
      }()
     
@@ -32,6 +42,7 @@ class ListingViewController: UIViewController {
        
         viewModel.delegate = self
         viewModel.fetchSuggestProducts()
+        viewModel.fetchProducts()
         
     }
     
@@ -53,7 +64,6 @@ class ListingViewController: UIViewController {
                 tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ])
-        tableView.estimatedRowHeight = 200
     }
     
     func setupNavigationBar() {
@@ -80,6 +90,14 @@ class ListingViewController: UIViewController {
 
 
 extension ListingViewController: ListingViewModelDelegate {
+    func didFetchProducts(products: [ProductData]) {
+        self.products = products
+    }
+    
+    func fetchProductsFailed(withError error: Error) {
+        print("Ürünler alınamadı: \(error.localizedDescription)")
+    }
+    
     func didFetchSuggestProducts(products: [ProductData]) {
         suggestedProducts = products
     }
@@ -104,6 +122,7 @@ extension ListingViewController: UITableViewDataSource{
             return suggestCell
         } else {
             let productCell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
+            productCell.configure(with: self.products)
             return productCell
         }
         
@@ -120,11 +139,12 @@ extension ListingViewController: UITableViewDelegate{
           tableView.deselectRow(at: indexPath, animated: true)
       }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return 200
+            return 185
         }else{
-            return UITableView.automaticDimension
+            return 558
         }
             
     }
