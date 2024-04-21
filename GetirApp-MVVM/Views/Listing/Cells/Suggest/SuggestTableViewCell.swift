@@ -9,6 +9,7 @@ import UIKit
 
 class SuggestTableViewCell: UITableViewCell {
     
+    weak var parentViewController: ListingViewController?
     
     private let containerView: UIView = {
         let view = UIView()
@@ -50,11 +51,9 @@ class SuggestTableViewCell: UITableViewCell {
     func configure(with products: [ProductData]) {
         self.suggestedProducts = products
         collectionView.reloadData()
-//        print(suggestedProducts.first?.name)
     }
     
     func prepareCollectionView() {
-//        print("PREPARECOLLECTİON ÇIKTI")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SuggestCell.self, forCellWithReuseIdentifier: "SuggestCell")
@@ -64,10 +63,8 @@ class SuggestTableViewCell: UITableViewCell {
     }
  
     private func setupView() {
-           // UITableViewCell'e containerView'ı ekleyin
            contentView.addSubview(containerView)
            
-           // containerView'a ait layout kurallarını belirleyin
            NSLayoutConstraint.activate([
                containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
                containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -113,6 +110,10 @@ extension SuggestTableViewCell: UICollectionViewDelegate{
         print(indexPath.item)
         collectionView.deselectItem(at: indexPath, animated: true)
           
+        let selectedProduct = suggestedProducts[indexPath.item]
+        let detailViewModel = DetailViewModel(product: selectedProduct)
+        let detailViewController = DetailViewController(viewModel: detailViewModel)
+        parentViewController?.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
 }

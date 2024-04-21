@@ -58,7 +58,9 @@ class ProductCell: UICollectionViewCell {
        private let stepperButton: UIButton = {
            let button = UIButton(type: .custom)
            button.translatesAutoresizingMaskIntoConstraints = false
-           button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+           button.setImage(UIImage(named: "plus"), for: .normal)
+           button.backgroundColor = .white
+           
            button.tintColor = Constants.Color.stepperColor
            return button
        }()

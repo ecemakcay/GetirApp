@@ -58,7 +58,8 @@ class SuggestCell: UICollectionViewCell {
        private let stepperButton: UIButton = {
            let button = UIButton(type: .custom)
            button.translatesAutoresizingMaskIntoConstraints = false
-           button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+           button.setImage(UIImage(named: "plus"), for: .normal)
+           button.backgroundColor = .white
            button.tintColor = Constants.Color.stepperColor
            return button
        }()
@@ -124,7 +125,7 @@ class SuggestCell: UICollectionViewCell {
                
                // Stepper Button Constraints
                stepperButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-               stepperButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+               stepperButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 8),
                stepperButton.widthAnchor.constraint(equalToConstant: 32),
                stepperButton.heightAnchor.constraint(equalToConstant: 32),
                

@@ -58,12 +58,11 @@ class ListingViewController: UIViewController {
     
     func setupTableConstraits() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            ])
+            tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+
     }
     
     func setupNavigationBar() {
@@ -71,8 +70,8 @@ class ListingViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = Constants.Color.navBarColor
         navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
 
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.Color.navBarTextColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
-        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.Color.navBarTextColor,    NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
+        navigationItem.title = "Ürünler"
        
         let basketButton = UIBarButtonItem(image: UIImage(systemName: "basket"), style: .plain, target: self, action: #selector(basketButtonTapped))
         let basketItemCountLabel = UILabel()
@@ -117,12 +116,16 @@ extension ListingViewController: UITableViewDataSource{
 
         if indexPath.row == 0 {
             let suggestCell = tableView.dequeueReusableCell(withIdentifier: "SuggestTableViewCell", for: indexPath) as! SuggestTableViewCell
+            suggestCell.parentViewController = self
             suggestCell.configure(with: self.suggestedProducts)
            
             return suggestCell
+            
         } else {
             let productCell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
+            productCell.parentViewController = self
             productCell.configure(with: self.products)
+            
             return productCell
         }
         
@@ -141,12 +144,11 @@ extension ListingViewController: UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0{
-            return 185
-        }else{
-            return 558
-        }
-            
-    }
+          if indexPath.row == 0 {
+              return 185
+          } else {
+              return 518
+          }
+      }
 
 }

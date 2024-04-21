@@ -9,10 +9,12 @@ import UIKit
 
 class ProductTableViewCell: UITableViewCell {
     
+    weak var parentViewController: ListingViewController?
+    
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Constants.Color.tableViewColor
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -33,7 +35,7 @@ class ProductTableViewCell: UITableViewCell {
             collectionView.reloadData()
         }
     }
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         prepareCollectionView()
@@ -78,8 +80,8 @@ class ProductTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
-            collectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0),
+            collectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            collectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
             collectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16)
         ])
     }
@@ -109,6 +111,11 @@ extension ProductTableViewCell: UICollectionViewDelegate{
         print(indexPath.item)
         collectionView.deselectItem(at: indexPath, animated: true)
         
+        let selectedProduct = products[indexPath.item]
+        let detailViewModel = DetailViewModel(product: selectedProduct)
+        let detailViewController = DetailViewController(viewModel: detailViewModel)
+        parentViewController?.navigationController?.pushViewController(detailViewController, animated: true)
+  
     }
     
 }
