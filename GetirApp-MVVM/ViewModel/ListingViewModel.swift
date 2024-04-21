@@ -19,7 +19,7 @@ class ListingViewModel {
     weak var delegate: ListingViewModelDelegate?
     var products: [ProductData] = []
     var suggestProducts: [ProductData] = []
-    
+  
     func fetchSuggestProducts() {
         NetworkRequest.shared.getSuggestedProducts { [weak self] result in
             guard let self = self else { return }
