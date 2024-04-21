@@ -33,6 +33,10 @@ struct Constants{
         static let priceFont: UIFont = UIFont.systemFont(ofSize: 12, weight: .bold)
         static let attributeFont: UIFont = UIFont.systemFont(ofSize: 12, weight: .semibold)
         static let navBarFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .bold)
+        
+        static let detailNameFont: UIFont = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        static let detailPriceFont: UIFont = UIFont.systemFont(ofSize: 27, weight: .bold)
+        static let detailAttributeFont: UIFont = UIFont.systemFont(ofSize: 12, weight: .semibold)
     }
     
 }
