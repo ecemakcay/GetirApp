@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DECD58A12BD5DA4900556570 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD58A02BD5DA4900556570 /* CoreDataManager.swift */; };
+		DECD58A42BD6109600556570 /* NavigationBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD58A32BD6109600556570 /* NavigationBarItemView.swift */; };
+		DECD58A62BD6114200556570 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD58A52BD6114200556570 /* UINavigationController+Extension.swift */; };
+		DECD58A82BD6150A00556570 /* NavigationBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD58A72BD6150A00556570 /* NavigationBarViewModel.swift */; };
 		DED092752BD4A6F4008995E9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED092742BD4A6F4008995E9 /* UIViewController+Extension.swift */; };
 		DEE114A82BD334CF00DAEE10 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE114A72BD334CF00DAEE10 /* ProductCell.swift */; };
 		DEE114AA2BD34A3C00DAEE10 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE114A92BD34A3C00DAEE10 /* DetailViewController.swift */; };
@@ -51,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DECD58A02BD5DA4900556570 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		DECD58A32BD6109600556570 /* NavigationBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarItemView.swift; sourceTree = "<group>"; };
+		DECD58A52BD6114200556570 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		DECD58A72BD6150A00556570 /* NavigationBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModel.swift; sourceTree = "<group>"; };
 		DED092742BD4A6F4008995E9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DEE114A72BD334CF00DAEE10 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		DEE114A92BD34A3C00DAEE10 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +114,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DECD589F2BD5DA2800556570 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DECD58A02BD5DA4900556570 /* CoreDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DECD58A22BD6108000556570 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DECD58A32BD6109600556570 /* NavigationBarItemView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		DEE2D8332BD190D3006847A2 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				DEE2D8802BD192F9006847A2 /* Resources */,
+				DECD589F2BD5DA2800556570 /* Manager */,
 				DEE2D87D2BD1929C006847A2 /* Service */,
 				DEE2D87C2BD19295006847A2 /* Model */,
 				DEE2D87B2BD1928B006847A2 /* ViewModel */,
@@ -176,6 +201,7 @@
 			children = (
 				DEE2D89B2BD19955006847A2 /* ListingViewModel.swift */,
 				DEE114AB2BD3562000DAEE10 /* DetailViewModel.swift */,
+				DECD58A72BD6150A00556570 /* NavigationBarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -201,6 +227,7 @@
 		DEE2D8802BD192F9006847A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DECD58A22BD6108000556570 /* Utils */,
 				DEE2D8822BD1930F006847A2 /* Common */,
 				DEE2D8812BD19305006847A2 /* Extensions */,
 			);
@@ -212,6 +239,7 @@
 			children = (
 				DEE114AD2BD363DE00DAEE10 /* Collection+Extension.swift */,
 				DED092742BD4A6F4008995E9 /* UIViewController+Extension.swift */,
+				DECD58A52BD6114200556570 /* UINavigationController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -398,13 +426,17 @@
 			files = (
 				DED092752BD4A6F4008995E9 /* UIViewController+Extension.swift in Sources */,
 				DEE2D89A2BD19870006847A2 /* ListingModel.swift in Sources */,
+				DECD58A62BD6114200556570 /* UINavigationController+Extension.swift in Sources */,
 				DEE2D8842BD19337006847A2 /* Constants.swift in Sources */,
 				DEE2D8942BD1981C006847A2 /* Endpoint.swift in Sources */,
+				DECD58A12BD5DA4900556570 /* CoreDataManager.swift in Sources */,
+				DECD58A42BD6109600556570 /* NavigationBarItemView.swift in Sources */,
 				DEE2D8962BD19834006847A2 /* NetworkManager.swift in Sources */,
 				DEE114A82BD334CF00DAEE10 /* ProductCell.swift in Sources */,
 				DEE2D8402BD190D3006847A2 /* AppDelegate.swift in Sources */,
 				DEE2D88D2BD19774006847A2 /* ListingViewController.swift in Sources */,
 				DEE2D8A02BD19AF4006847A2 /* SuggestCell.swift in Sources */,
+				DECD58A82BD6150A00556570 /* NavigationBarViewModel.swift in Sources */,
 				DEE2D8982BD19852006847A2 /* NetworkRequest.swift in Sources */,
 				DEE114AE2BD363DE00DAEE10 /* Collection+Extension.swift in Sources */,
 				DEE2D8422BD190D3006847A2 /* SceneDelegate.swift in Sources */,
