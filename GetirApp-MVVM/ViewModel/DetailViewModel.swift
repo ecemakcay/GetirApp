@@ -8,7 +8,9 @@
 import Foundation
 
 class DetailViewModel {
+    
     private let product: ProductData
+    private var quantity: Int = 1
     
     init(product: ProductData) {
         self.product = product
@@ -17,5 +19,28 @@ class DetailViewModel {
     func getProduct() -> ProductData {
         return product
     }
+    
+    
+    func getQuantity() -> Int {
+        return quantity
+    }
+    
+    func setQuantity(_ newQuantity: Int) {
+        quantity = newQuantity
+    }
+    
+    func saveProductToCart() {
+        CoreDataManager.shared.saveData(product: product, quantity: quantity)
+    }
+    
+    func updateQuantityAndSave(newQuantity: Int) {
+        setQuantity(newQuantity)
+        CoreDataManager.shared.updateItemQuantity(forProductID: getProductID() ?? "123", newQuantity: newQuantity)
+    }
+
+    func getProductID() -> String? {
+        return product.id
+    }
+
 }
 
