@@ -4,6 +4,7 @@
 - I used [Kingfisher](https://github.com/onevcat/Kingfisher) to view extensions and set an image directly from a URL.
 - I used [Alamofire](https://github.com/Alamofire/Alamofire) for Network operations.
 - I used CoreData for database operations.
+- MVVM architectural 
 
 ### Features
 - Horizontal Scrollable List Products & Vertical Scrollable List Products
