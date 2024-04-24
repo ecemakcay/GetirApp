@@ -45,15 +45,23 @@ class ListingViewController: UIViewController {
         super.viewDidLoad()
         
         setupCollectionView()
-        setupNavigationBar()
-        
+       
         viewModel.delegate = self
         viewModel.fetchSuggestProducts()
         viewModel.fetchProducts()
+        
+        view.backgroundColor = .secondarySystemBackground
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar(title: "Ürünler")
+        navigationController?.updateNavigationBarItem()
+        navigationItem.hidesBackButton = true
     }
     
     private func setupSuggestCollectionViewLayout() -> UICollectionViewLayout {
-        // Suggest section layout
+        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8)
@@ -71,17 +79,12 @@ class ListingViewController: UIViewController {
     }
 
 
-
-
-
-
-
     private func setupProductCollectionViewLayout() -> UICollectionViewLayout {
-        // Product section layout
+        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0/3), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        // Hücre içeriğinin kenar boşluklarını azaltıyoruz
+        
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0/3))
@@ -96,9 +99,6 @@ class ListingViewController: UIViewController {
     }
 
 
-
-
-
     private func setupCollectionView() {
         view.addSubview(suggestedCollectionView)
         view.addSubview(productsCollectionView)
@@ -107,38 +107,17 @@ class ListingViewController: UIViewController {
         productsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            // Suggest Collection View Constraints
-            suggestedCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            
+            suggestedCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             suggestedCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             suggestedCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            suggestedCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35), // Yüksekliği %35 olarak ayarladık
+            suggestedCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.28),
             
-            // Product Collection View Constraints
-            productsCollectionView.topAnchor.constraint(equalTo: suggestedCollectionView.bottomAnchor),
+            productsCollectionView.topAnchor.constraint(equalTo: suggestedCollectionView.bottomAnchor, constant: 16),
             productsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             productsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             productsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-    }
-
-    func setupNavigationBar() {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.backgroundColor = Constants.Color.navBarColor
-        navigationController?.navigationBar.barTintColor = Constants.Color.navBarColor
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.Color.navBarTextColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
-        navigationItem.title = "Ürünler"
-        
-        let basketButton = UIBarButtonItem(image: UIImage(systemName: "basket"), style: .plain, target: self, action: #selector(basketButtonTapped))
-        let basketItemCountLabel = UILabel()
-        basketItemCountLabel.text = "3"
-        basketItemCountLabel.textColor = .white
-        let basketItemCountBarButton = UIBarButtonItem(customView: basketItemCountLabel)
-        navigationItem.rightBarButtonItems = [basketButton, basketItemCountBarButton]
-    }
-    
-    @objc func basketButtonTapped() {
-        
     }
     
 }
