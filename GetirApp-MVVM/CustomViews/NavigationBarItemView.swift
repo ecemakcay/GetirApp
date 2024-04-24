@@ -10,10 +10,18 @@ import UIKit
 class NavigationBarItemView: UIView {
     
     var viewModel: NavigationBarViewModel? {
-           didSet {
-               observeTotalPriceChanges()
-           }
-       }
+        didSet {
+            observeTotalPriceChanges()
+        }
+    }
+    
+    var totalPrice: Double = 0.0 {
+        didSet {
+            totalPriceLabel.text = String(format: " ₺%.2f  ", totalPrice)
+        }
+    }
+    
+    var basketButtonAction: (() -> Void)?
     
     private let basketButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -43,22 +51,13 @@ class NavigationBarItemView: UIView {
         return stackView
     }()
     
-    
-       private let spacerView: UIView = {
-           let view = UIView()
-           view.translatesAutoresizingMaskIntoConstraints = false
-           view.setContentHuggingPriority(.defaultLow, for: .horizontal)
-           view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-           return view
-       }()
-    
-    var totalPrice: Double = 0.0 {
-        didSet {
-            totalPriceLabel.text = String(format: "₺%.2f", totalPrice)
-        }
-    }
-    
-    var basketButtonAction: (() -> Void)?
+    private let spacerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -73,12 +72,11 @@ class NavigationBarItemView: UIView {
     }
     
     private func observeTotalPriceChanges() {
-            viewModel?.totalPriceDidChange = { [weak self] totalPrice in
-                self?.totalPrice = totalPrice
-            }
+        viewModel?.totalPriceDidChange = { [weak self] totalPrice in
+            self?.totalPrice = totalPrice
         }
+    }
 
-    
     private func setupViews() {
         addSubview(stackView)
         stackView.addArrangedSubview(basketButton)

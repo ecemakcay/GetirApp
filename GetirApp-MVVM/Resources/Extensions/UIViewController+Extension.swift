@@ -21,6 +21,34 @@ extension UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func setupNavigationBar(title: String) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = Constants.Color.navBarColor
+        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.Color.navBarTextColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        navigationController?.navigationBar.isTranslucent = false
+        
+        navigationItem.title = title
+    }
+
+    func clearBasket(){
+        let clearButton = UIBarButtonItem(image: UIImage(named: "trash"), style: .plain, target: self, action: #selector(clearButtonTapped))
+        clearButton.tintColor = .white
+        self.navigationItem.rightBarButtonItem = clearButton
+    }
+    
+    @objc func clearButtonTapped(){
+        let viewModel = NavigationBarViewModel()
+        viewModel.clearBasket()
+        let vc = ListingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func showAlert(alertText : String, alertMessage : String) {
         let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
