@@ -10,7 +10,6 @@ import Foundation
 class DetailViewModel {
     
     private let product: ProductData
-    private var quantity: Int = 1
     
     init(product: ProductData) {
         self.product = product
@@ -20,27 +19,15 @@ class DetailViewModel {
         return product
     }
     
-    
     func getQuantity() -> Int {
-        return quantity
+        return CoreDataManager.shared.getQuantity(forProductID: getProductID() ?? "") ?? 0
     }
-    
-    func setQuantity(_ newQuantity: Int) {
-        quantity = newQuantity
-    }
-    
+   
     func saveProductToCart() {
-        CoreDataManager.shared.saveData(product: product, quantity: quantity)
-    }
-    
-    func updateQuantityAndSave(newQuantity: Int) {
-        setQuantity(newQuantity)
-        CoreDataManager.shared.updateItemQuantity(forProductID: getProductID() ?? "123", newQuantity: newQuantity)
+        CoreDataManager.shared.saveData(productData: product, quantity: 1)
     }
 
     func getProductID() -> String? {
         return product.id
     }
-
 }
-
