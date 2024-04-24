@@ -158,50 +158,49 @@ class DetailViewController: UIViewController {
         }
     }
 
-    
     func setupConstraints(){
-           view.addSubview(topView)
-           view.addSubview(bottomView)
-           
-           topView.addSubview(productImageView)
-           topView.addSubview(stackView)
-           
-           stackView.addArrangedSubview(nameLabel)
-           stackView.addArrangedSubview(priceLabel)
-           stackView.addArrangedSubview(attributeLabel)
-           
-           bottomView.addSubview(stepperView)
-           bottomView.addSubview(addToCartButton)
-           
-           NSLayoutConstraint.activate([
-               topView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-               topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-               topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-               
-               productImageView.topAnchor.constraint(equalTo: topView.topAnchor),
-               productImageView.leadingAnchor.constraint(equalTo: topView.leadingAnchor),
-               productImageView.trailingAnchor.constraint(equalTo: topView.trailingAnchor),
-               productImageView.heightAnchor.constraint(equalToConstant: 200),
-               
-               stackView.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 8),
-               stackView.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 16),
-               stackView.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -16),
-               
-               bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-               bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-               bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-               bottomView.heightAnchor.constraint(equalToConstant: 100),
-               
-               stepperView.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
-               stepperView.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor),
-               stepperView.widthAnchor.constraint(equalToConstant: 200),
-               stepperView.heightAnchor.constraint(equalToConstant: 44),
-               
-               addToCartButton.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
-               addToCartButton.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor),
-               addToCartButton.widthAnchor.constraint(equalToConstant: 343),
-               addToCartButton.heightAnchor.constraint(equalToConstant: 50),
-           ])
-       }
+        view.addSubview(topView)
+        view.addSubview(bottomView)
+        
+        topView.addSubview(productImageView)
+        topView.addSubview(stackView)
+        
+        stackView.addArrangedSubview(nameLabel)
+        stackView.addArrangedSubview(priceLabel)
+        stackView.addArrangedSubview(attributeLabel)
+        
+        bottomView.addSubview(stepperView)
+        bottomView.addSubview(addToCartButton)
+        
+        NSLayoutConstraint.activate([
+            topView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            productImageView.topAnchor.constraint(equalTo: topView.topAnchor),
+            productImageView.leadingAnchor.constraint(equalTo: topView.leadingAnchor),
+            productImageView.trailingAnchor.constraint(equalTo: topView.trailingAnchor),
+            productImageView.heightAnchor.constraint(equalToConstant: 200),
+            
+            stackView.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 8),
+            stackView.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -16),
+            
+            bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomView.heightAnchor.constraint(equalToConstant: 100),
+            
+            stepperView.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
+            stepperView.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor),
+            stepperView.widthAnchor.constraint(equalToConstant: 200),
+            stepperView.heightAnchor.constraint(equalToConstant: 44),
+            
+            addToCartButton.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
+            addToCartButton.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor),
+            addToCartButton.widthAnchor.constraint(equalToConstant: 343),
+            addToCartButton.heightAnchor.constraint(equalToConstant: 50),
+        ])
+    }
     
 }
