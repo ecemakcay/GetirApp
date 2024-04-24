@@ -95,6 +95,11 @@ class DetailViewController: UIViewController {
         setupNavigationBar(title: "Ürün Detayı")
     }
  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.updateNavigationBarItem()
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         stepperView.updateConstraintsIfNeeded()
